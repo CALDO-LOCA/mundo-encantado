@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mundo Encantado do Brinquedo</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="logo">ME</div>
+        <div class="brand-text">
+          <h1>Mundo Encantado do Brinquedo</h1>
+          <p>Brincar, aprender e crescer — 0 a 10 anos</p>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#promos">Promoções</a>
+        <a href="#produtos">Produtos</a>
+        <a href="#avaliacoes">Feedback</a>
+        <a href="#contato">Contato</a>
+        <button id="open-cart" class="btn secondary">Carrinho (<span id="cart-count">0</span>)</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero card">
+      <div>
+        <h2>Volta às aulas mágica ✨</h2>
+        <p>Até 20% OFF em kits didáticos. Frete fixo R$15 ou grátis a partir de R$200.</p>
+        <p class="muted">Use o cupom <b>BRINCO10</b> para 10% de desconto.</p>
+        <a href="#produtos" class="btn">Ver produtos</a>
+      </div>
+      <img class="hero-img" src="https://images.unsplash.com/photo-1604881989315-27f8f02a7a4b?auto=format&fit=crop&w=1200&q=60" alt="Crianças brincando" />
+    </section>
+
+    <section id="promos" class="card promos">
+      <h3>Promoções</h3>
+      <ul>
+        <li>Compre 2 e leve 3 em quebra-cabeças selecionados</li>
+        <li>Frete grátis a partir de R$200 (use <b>FREEDEL</b>)</li>
+        <li>10% OFF no primeiro pedido com <b>BRINCO10</b></li>
+      </ul>
+    </section>
+
+    <section id="produtos">
+      <div class="section-head">
+        <h3>Produtos</h3>
+        <div class="filters">
+          <input id="search" type="search" placeholder="Buscar produto..." />
+          <select id="ageFilter">
+            <option value="">Todas as idades</option>
+            <option value="0-3">0-3 anos</option>
+            <option value="1-4">1-4 anos</option>
+            <option value="2-6">2-6 anos</option>
+            <option value="3-6">3-6 anos</option>
+            <option value="6-10">6-10 anos</option>
+          </select>
+        </div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section id="avaliacoes" class="card">
+      <h3>Avaliações dos clientes</h3>
+      <div id="feedback-list" class="feedback-list"></div>
+      <details class="feedback-form">
+        <summary class="btn outline">Deixe seu feedback</summary>
+        <form id="feedbackForm">
+          <input type="text" id="fbName" placeholder="Nome" />
+          <select id="fbRating">
+            <option value="5">5 estrelas</option>
+            <option value="4">4 estrelas</option>
+            <option value="3">3 estrelas</option>
+            <option value="2">2 estrelas</option>
+            <option value="1">1 estrela</option>
+          </select>
+          <textarea id="fbText" rows="3" placeholder="Comentário"></textarea>
+          <button class="btn" type="submit">Enviar</button>
+        </form>
+      </details>
+    </section>
+
+    <section id="contato" class="card">
+      <h3>Contato</h3>
+      <form id="contactForm" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+        <input required name="name" placeholder="Seu nome" />
+        <input required name="email" type="email" placeholder="Seu e-mail" />
+        <textarea required name="message" rows="4" placeholder="Mensagem"></textarea>
+        <button class="btn" type="submit">Enviar</button>
+        <p class="muted small">Dica: substitua <code>SEU_ID_AQUI</code> pelo ID do seu formulário no Formspree (plano grátis).</p>
+      </form>
+    </section>
+  </main>
+
+  <aside id="cartDrawer" class="drawer">
+    <div class="drawer-inner">
+      <header class="drawer-head">
+        <h4>Seu carrinho</h4>
+        <button id="close-cart" class="icon-btn" aria-label="Fechar">✕</button>
+      </header>
+
+      <div id="cartItems" class="cart-items"></div>
+
+      <div class="cart-summary">
+        <div class="row">
+          <label>Subtotal</label><span id="subtotal">R$ 0,00</span>
+        </div>
+        <div class="row">
+          <label>Frete (fixo)</label><span id="frete">R$ 15,00</span>
+        </div>
+        <div class="row wrap">
+          <input id="cupom" placeholder="Cupom (BRINCO10 / FREEDEL)" />
+          <button id="apply-cupom" class="btn small">Aplicar</button>
+        </div>
+        <div class="row total">
+          <label>Total</label><span id="total">R$ 0,00</span>
+        </div>
+
+        <div class="cep row wrap">
+          <input id="cep" placeholder="Calcular frete por CEP (simulado)" />
+          <button id="calc-frete" class="btn small outline">Calcular</button>
+        </div>
+        <p class="muted small">Cálculo de frete simulado (estático) para plano gratuito.</p>
+
+        <div class="payments">
+          <button id="checkout-simulado" class="btn block">Finalizar compra (simulado)</button>
+          <a id="paypal-sandbox" class="btn block outline" href="https://www.sandbox.paypal.com/checkoutnow?token=TEST" target="_blank" rel="noopener">Checkout PayPal (Sandbox)</a>
+          <a id="pagseguro-sandbox" class="btn block outline" href="https://sandbox.pagseguro.uol.com.br/" target="_blank" rel="noopener">Checkout PagSeguro (Sandbox)</a>
+          <p class="muted small">Para produção, substitua pelos seus links/integrações oficiais (grátis).</p>
+        </div>
+
+        <div id="checkoutMsg" class="msg"></div>
+      </div>
+    </div>
+  </aside>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <b>Mundo Encantado do Brinquedo</b><br/>
+        <span class="muted small">CNPJ fictício — Uberaba/MG</span>
+      </div>
+      <nav class="footer-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos</a>
+        <a href="#contato">Fale conosco</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

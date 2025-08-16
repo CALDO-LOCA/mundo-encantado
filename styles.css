@@ -1,0 +1,71 @@
+/* Paleta lúdica e acessível */
+:root{
+  --primary:#FFB703; /* amarelo mel */
+  --secondary:#FB8500;/* laranja */
+  --accent:#8ECAE6;   /* azul bebê */
+  --ink:#1f2937;      /* cinza-escuro */
+  --bg:#fff7ed;       /* creme */
+  --muted:#6b7280;
+  --radius:16px;
+  --shadow:0 10px 20px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+.container{max-width:1100px;margin:0 auto;padding:0 16px}
+.card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.nav{position:sticky;top:0;background:#fff;box-shadow:var(--shadow);z-index:10}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;background:linear-gradient(135deg,var(--secondary),var(--accent));font-weight:700}
+.brand-text h1{font-size:18px;margin:0}
+.brand-text p{margin:2px 0 0;color:var(--muted);font-size:12px}
+.nav-links{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.nav a{color:var(--ink);text-decoration:none;font-weight:600}
+.btn{background:var(--secondary);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;display:inline-block;text-align:center}
+.btn:hover{filter:brightness(.95)}
+.btn.secondary{background:var(--accent);color:#0b3c5d}
+.btn.outline{background:#fff;border:2px solid var(--accent);color:#0b3c5d}
+.btn.small{padding:8px 10px;border-radius:10px;font-size:14px}
+.btn.block{display:block;width:100%}
+.icon-btn{background:#fff;border:2px solid #eee;border-radius:10px;padding:6px 10px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
+.hero h2{margin:0 0 4px;font-size:28px}
+.hero p{margin:6px 0}
+.hero-img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+.promos ul{margin:0;padding-left:18px}
+.section-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:24px 0 10px}
+.filters{display:flex;gap:8px}
+.filters input,.filters select,.feedback-form input,.feedback-form select,.feedback-form textarea,#contactForm input,#contactForm textarea{padding:10px;border-radius:10px;border:2px solid #eee;min-width:220px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card-item{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:12px;display:flex;flex-direction:column}
+.card-item img{width:100%;height:160px;object-fit:cover;border-radius:12px}
+.price{font-weight:700;font-size:18px}
+.row{display:flex;align-items:center;justify-content:space-between;margin:8px 0;gap:8px}
+.row.wrap{flex-wrap:wrap}
+.total{font-weight:800;font-size:18px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+/* Drawer do carrinho */
+.drawer{position:fixed;inset:0;display:none;background:rgba(0,0,0,.35)}
+.drawer.show{display:block}
+.drawer-inner{margin-left:auto;background:#fff;height:100%;max-width:420px;width:100%;display:flex;flex-direction:column}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eee}
+.cart-items{padding:12px 16px;overflow:auto;flex:1}
+.cart-item{display:flex;gap:10px;border-bottom:1px solid #f1f1f1;padding:10px 0}
+.cart-item img{width:70px;height:70px;object-fit:cover;border-radius:10px}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{border:2px solid #eee;background:#fff;border-radius:8px;padding:4px 8px;cursor:pointer}
+.cart-summary{padding:12px 16px;border-top:1px solid #eee}
+.msg{margin-top:10px;padding:10px;border-radius:10px;background:#ecfeff;color:#0e7490}
+.footer{margin:30px 0 0;background:#fff;box-shadow:var(--shadow)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:10px}
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .filters{width:100%}
+  .filters input{flex:1}
+}
